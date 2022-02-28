@@ -1,0 +1,38 @@
+.profile
+{
+    float: left;
+    border: 1px solid black;
+}
+.profileDetails
+{
+    float: right;
+}
+.details
+{
+    width: 80%;
+    border: 1px solid black;
+    float: right;
+}
+.details p
+{
+    padding-left: 1%;
+    padding-top: 1%;
+}
+.images
+{
+    width: 75px;
+    height: 75px;
+}
+
+.tweets
+{
+    float:left;
+}
+.tweets td
+{
+    border: 1px solid black;
+}
+.followers
+{
+    float: right;
+}
