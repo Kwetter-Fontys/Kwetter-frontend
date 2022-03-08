@@ -1,7 +1,7 @@
 .profile
 {
     float: left;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .profileDetails
 {
@@ -10,7 +10,7 @@
 .details
 {
     width: 80%;
-    border: 1px solid black;
+    border: 1px solid white;
     float: right;
 }
 .details p
@@ -30,9 +30,13 @@
 }
 .tweets td
 {
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .followers
 {
     float: right;
+}
+b, p
+{
+    color: white !important;
 }
