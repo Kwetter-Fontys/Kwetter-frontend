@@ -2,14 +2,15 @@
 {
     float: left;
     border: 1px solid white;
+    width: 25%;
 }
-.profileDetails
+.col-6 .images
 {
-    float: right;
+     border-radius: 50%; 
 }
 .details
 {
-    width: 80%;
+    width: 100%;
     border: 1px solid white;
     float: right;
 }
@@ -27,6 +28,7 @@
 .tweets
 {
     float:left;
+    width: 50%;
 }
 .tweets td
 {
@@ -35,6 +37,7 @@
 .followers
 {
     float: right;
+    width: 25%;
 }
 b, p
 {
