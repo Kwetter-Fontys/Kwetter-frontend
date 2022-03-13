@@ -1,9 +1,14 @@
 <div class="col-6 profile" >
     <img  class="col-6 images" src="./assets/test.jpg"/>
-    <p>Name: {{user.firstName}} {{user.lastName}}</p>
-    <p>Location: {{user.location}}</p>
-    <p>Website: {{user.website}}</p>
-    <p>Bio: {{user.biography}}</p>
+    <form class = "createProduct" #updateForm = "ngForm">
+        <input type="hidden" [(ngModel)] = "user.id" name="id">
+        <p>Name: <input class="form-control" id="userFirstname" name="firstName" [(ngModel)] = "user.firstName"> 
+            <input class="form-control" id="userLastName" name="lastName" [(ngModel)] = "user.lastName"></p>
+        <p>Location: <input class="form-control" id="userLocation" name="location" [(ngModel)] = "user.location"></p>
+        <p>Website: <input class="form-control" id="userWebsite" name="website" [(ngModel)] = "user.website"></p>
+        <p>Bio: <input class="form-control" id="userBiography" name="biography" [(ngModel)] = "user.biography"></p>
+        <button id="updateBtn" (click)="updateUser(user.id,this.updateForm)"  type="button">Update</button>
+    </form>
 </div>
 <div class="col-6 tweets">
     <table class="table">

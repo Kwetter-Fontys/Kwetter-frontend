@@ -34,9 +34,17 @@ export class ProfilePageComponent implements OnInit {
     this.userService.readSingleUser(id).subscribe(user => 
       {
         this.user = user
-        console.log(user);
       });
+  }
 
+  updateUser(id, form)
+  {
+      this.userService.updateUser(id, form.value).subscribe(
+        res=>
+        {
+          this.user = res;
+        }
+      );
   }
 
 }
