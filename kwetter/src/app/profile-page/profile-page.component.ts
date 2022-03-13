@@ -14,6 +14,8 @@ export class ProfilePageComponent implements OnInit {
 
   urlId!: any;
   user: User;
+  followings: User[];
+  followers: User[];
 
   ngOnInit(): void 
   {
@@ -26,7 +28,14 @@ export class ProfilePageComponent implements OnInit {
       this.urlId = this.route.snapshot.paramMap.get("id");
     }
 
-    this.getUser(this.urlId);
+    this.getAll(this.urlId);
+  }
+
+  getAll(id:number): void
+  {
+    this.getUser(id);
+    this.getFollowers(id);
+    this.getFollowings(id);
   }
 
   getUser(id: number): void
@@ -45,6 +54,24 @@ export class ProfilePageComponent implements OnInit {
           this.user = res;
         }
       );
+  }
+
+  getFollowings(id: number): void
+  {
+    this.userService.getFollowers(id).subscribe(following => 
+      {
+        this.followers = following
+        console.log(following);
+      });
+  }
+
+  getFollowers(id: number): void
+  {
+    this.userService.getFollowings(id).subscribe(follower => 
+      {
+        this.followings = follower
+        console.log(follower);
+      });
   }
 
 }

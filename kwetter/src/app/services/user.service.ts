@@ -32,4 +32,13 @@ export class UserService {
     return this.http.put<User>(`${this.api_loc}/${id}`, user, <Object>this.options);
   }
 
+  getFollowers(id: number): Observable<User[]>
+  {
+    return this.http.get<User[]>(`${this.api_loc}/followers/${id}`, <Object>this.options);
+  }
+
+  getFollowings(id: number): Observable<User[]>
+  {
+    return this.http.get<User[]>(`${this.api_loc}/followings/${id}`, <Object>this.options);
+  }
 }

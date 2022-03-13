@@ -39,7 +39,7 @@
     float: right;
     width: 25%;
 }
-b, p
+b, p, tr, thead
 {
     color: white !important;
 }

@@ -40,8 +40,24 @@
 </div>
 <div class="col-6 followers">
     <div class="details">
-    <a href="profile">43 Following </a> <a href="profile">20 Followers</a>
+    <a href="profile">{{followings.length}} Following </a> <a href="profile">{{followers.length}} Followers</a>
     <br>
+    <table class="table">
+        <thead>Followers</thead>
+        <tr *ngFor = "let follower of followers">
+            <td>
+                {{follower.firstName}} {{follower.lastName}}
+            </td>
+        </tr>
+    </table>
+    <table class="table">
+        <thead>Following</thead>
+        <tr *ngFor = "let following of followings">
+            <td>
+                {{following.firstName}} {{following.lastName}}
+            </td>
+        </tr>
+    </table>
     <a href="profile">3954 Kweets</a>
     </div>
 </div>
