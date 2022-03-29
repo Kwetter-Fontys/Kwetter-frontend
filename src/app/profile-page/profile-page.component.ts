@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../interfaces/user';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-profile-page',
