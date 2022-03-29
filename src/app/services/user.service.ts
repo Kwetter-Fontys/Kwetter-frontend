@@ -6,6 +6,7 @@ import { User } from '../interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   options: any;
   constructor(private http: HttpClient) { 
