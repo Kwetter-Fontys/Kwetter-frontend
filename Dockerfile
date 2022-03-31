@@ -2,9 +2,11 @@
 FROM node:latest as node
 WORKDIR /app
 COPY . .
-RUN npm install
+RUN npm ci
 RUN npm run build --prod
 
 #stage 2
 FROM nginx:alpine
-COPY --from=node /app/dist/Kwetter-frontend /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=node /app/dist/kwetter /usr/share/nginx/html
+EXPOSE 80

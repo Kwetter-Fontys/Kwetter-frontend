@@ -1,0 +1,7 @@
+version: "1.0"
+services:
+  kwetter:
+    build: .
+    container_name: kwetter
+    ports:
+      - "80:80"
