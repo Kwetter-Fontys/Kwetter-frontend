@@ -12,9 +12,9 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '7d61feb1-ec77-488e-9ee3-f5d3f26e065b'
   imageRepository: 'kwetter'
-  containerRegistry: 'kwetterregistry.azurecr.io'
+  containerRegistry: 'sebananas/kwetter'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'latest'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
