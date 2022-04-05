@@ -35,3 +35,5 @@ stages:
         repository: 'sebananas/kwetter'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: |
+          latest
