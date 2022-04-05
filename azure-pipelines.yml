@@ -1,5 +1,5 @@
 # Docker
-# Build and push an image to Azure Container Registry
+# Build and push an image to Docker hub
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '7d61feb1-ec77-488e-9ee3-f5d3f26e065b'
+  DockerHubConnection: '7d61feb1-ec77-488e-9ee3-f5d3f26e065b'
   imageRepository: 'kwetter'
   containerRegistry: 'sebananas/kwetter'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
@@ -34,6 +34,6 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: $(DockerHubConnection)
         tags: |
           $(tag)
