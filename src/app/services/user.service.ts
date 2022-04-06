@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs";
 import { User } from '.././interfaces/User';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
   options: any;
+  api_loc: string;
+  
   constructor(private http: HttpClient) { 
     this.options = 
     {
@@ -18,10 +20,9 @@ export class UserService {
         "Authorization": ""
       }
     };
-
+    this.api_loc = environment.apiUrl + "usercontroller";
   }
-
-  api_loc = "https://localhost:5001/api/usercontroller";
+  
 
   readSingleUser(id: number): Observable<User>
   {
