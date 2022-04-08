@@ -16,6 +16,8 @@ export class ProfilePageComponent implements OnInit {
   user: User;
   followings: User[];
   followers: User[];
+  editing: boolean = false;
+  loggedIn: boolean = false;
 
   ngOnInit(): void 
   {

@@ -1,17 +1,41 @@
+<app-header></app-header>
 <div class="col-6 profile" >
     <img  class="col-6 images" src="./assets/test.jpg"/>
-    <form class = "createProduct" #updateForm = "ngForm">
+    <form class = "createProduct form-group" #updateForm = "ngForm" *ngIf="editing == true">
         <input type="hidden" [(ngModel)] = "user.id" name="id">
-        <p>Name: <input class="form-control" id="userFirstname" name="firstName" [(ngModel)] = "user.firstName"> 
-            <input class="form-control" id="userLastName" name="lastName" [(ngModel)] = "user.lastName"></p>
+        <p>First name: <input class="form-control" id="userFirstname" name="firstName" [(ngModel)] = "user.firstName"></p>
+        <p>Last name:    <input class="form-control" id="userLastName" name="lastName" [(ngModel)] = "user.lastName"></p>
         <p>Location: <input class="form-control" id="userLocation" name="location" [(ngModel)] = "user.location"></p>
         <p>Website: <input class="form-control" id="userWebsite" name="website" [(ngModel)] = "user.website"></p>
         <p>Bio: <input class="form-control" id="userBiography" name="biography" [(ngModel)] = "user.biography"></p>
-        <button id="updateBtn" (click)="updateUser(user.id,this.updateForm)"  type="button">Update</button>
+        <button class="btn btn-primary btn-sm" (click)="editing = false; updateUser(user.id,this.updateForm)"  type="button">Update</button>
     </form>
+    <table class="table table-hover" *ngIf="editing == false">
+        <tr>
+            <td>
+                <p>Name: {{user.firstName}}  {{user.lastName}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Location: {{user.location}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Website: {{user.website}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Bio: {{user.biography}}</p>
+            </td>
+        </tr>
+        <button class="btn btn-primary btn-sm" (click)="editing = true"  type="button" *ngIf="urlId == 1">Edit</button>
+    </table>
 </div>
 <div class="col-6 tweets">
-    <table class="table">
+    <table class="table table-hover">
         <tr>
             <td>
                 <p>A lot of things happening #Wowa</p>
@@ -42,23 +66,23 @@
     <div class="details">
     <a href="profile">{{followings.length}} Following </a> <a href="profile">{{followers.length}} Followers</a>
     <br>
-    <table class="table">
-        <thead>Followers</thead>
-        <tr *ngFor = "let follower of followers">
-            <td>
-                {{follower.firstName}} {{follower.lastName}}
+    <table class="table table-hover">
+        <thead>Followers:</thead>
+        <tr>
+            <td *ngFor = "let follower of followers">
+                <a href="profile/{{follower.id}}">{{follower.firstName}} {{follower.lastName}}</a>
             </td>
         </tr>
     </table>
-    <table class="table">
-        <thead>Following</thead>
-        <tr *ngFor = "let following of followings">
-            <td>
-                {{following.firstName}} {{following.lastName}}
+    <table class="table table-hover">
+        <thead>Following:</thead>
+        <tr>
+            <td *ngFor = "let following of followings">
+                <a href="profile/{{following.id}}">{{following.firstName}} {{following.lastName}}</a>
             </td>
         </tr>
     </table>
-    <a href="profile">3954 Kweets</a>
+    <a href="profile">4 Tweets</a>
     </div>
 </div>
 <div class="col-6 following"></div>

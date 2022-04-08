@@ -9,6 +9,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ModerationComponent } from './moderation/moderation.component';
 import { AdministrationComponent } from './administration/administration.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdministrationComponent } from './administration/administration.compone
     ProfilePageComponent,
     RegistrationComponent,
     ModerationComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
