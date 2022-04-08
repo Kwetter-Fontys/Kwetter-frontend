@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://localhost:5001/api/"
+  userApiUrl: "https://localhost:5001/api/",
+  tweetApiUrl: "http://localhost:5002/api/"
 };
 
 /*

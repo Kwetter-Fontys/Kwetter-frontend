@@ -20,7 +20,7 @@ export class UserService {
         "Authorization": ""
       }
     };
-    this.api_loc = environment.apiUrl + "usercontroller";
+    this.api_loc = environment.userApiUrl + "usercontroller";
   }
   
 

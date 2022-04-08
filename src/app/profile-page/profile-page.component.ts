@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/User';
+import { TweetService } from '../services/tweet.service';
+import { Tweet } from '../interfaces/tweet';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,12 +12,13 @@ import { User } from 'src/app/interfaces/User';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private tweetService: TweetService, private route: ActivatedRoute) { }
 
   urlId!: any;
   user: User;
   followings: User[];
   followers: User[];
+  tweets: Tweet[];
   editing: boolean = false;
   loggedIn: boolean = false;
 
@@ -36,6 +39,7 @@ export class ProfilePageComponent implements OnInit {
   getAll(id:number): void
   {
     this.getUser(id);
+    this.getTweets(id);
     this.getFollowers(id);
     this.getFollowings(id);
   }
@@ -48,6 +52,14 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
+  getTweets(id: number): void
+  {
+    this.tweetService.readTweets(id).subscribe(tweets => 
+      {
+        this.tweets = tweets
+      });
+  }
+  
   updateUser(id, form)
   {
       this.userService.updateUser(id, form.value).subscribe(
@@ -63,7 +75,6 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getFollowers(id).subscribe(following => 
       {
         this.followers = following
-        console.log(following);
       });
   }
 
@@ -72,8 +83,15 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getFollowings(id).subscribe(follower => 
       {
         this.followings = follower
-        console.log(follower);
       });
   }
 
+
+  likeTweet(tweetId: number, userId: number)
+  {
+    this.tweetService.likeTweet(tweetId,userId).subscribe(tweet => 
+      {
+        console.log(tweet);
+      });
+  }
 }
