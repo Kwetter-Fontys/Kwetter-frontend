@@ -87,11 +87,37 @@ export class ProfilePageComponent implements OnInit {
   }
 
 
-  likeTweet(tweetId: number, userId: number)
+  likeTweet(tweetId: number)
   {
-    this.tweetService.likeTweet(tweetId,userId).subscribe(tweet => 
+    this.tweetService.likeTweet(tweetId,this.urlId).subscribe(tweet => 
       {
-        console.log(tweet);
+        this.tweets.forEach(twit => 
+        {
+          if(twit.id == tweet.id)
+          {
+            twit = tweet;
+          }
+
+        for (let index = 0; index < this.tweets.length; index++) 
+        {
+          if(this.tweets[index].id == tweet.id)
+          {
+            this.tweets[index] = tweet;
+          }
+        }
+        });
+        console.log(this.tweets);
       });
+  }
+
+  createTweet(form)
+  {
+    this.tweetService.createTweet(form.value.content, this.urlId).subscribe(
+      res=>
+      {
+        this.tweets = [res].concat(this.tweets);
+        console.log(this.tweets);
+      }
+    );
   }
 }

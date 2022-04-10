@@ -35,13 +35,20 @@
     </table>
 </div>
 <div class="col-6 tweets">
+    <div class="form-group">
+        <form class = "createProduct form-group" #tweetForm = "ngForm">
+        <label class="col-form-label mt-4" for="inputDefault">Create a tweet!</label>
+        <input type="text" class="form-control" placeholder="Tweet"  name="content" id="inputDefault" ngModel>
+        <button class="btn btn-primary btn-sm" (click)="createTweet(this.tweetForm)"  type="button" *ngIf="urlId == 1">Tweet!</button>
+        </form>
+      </div>
     <table class="table table-hover">
         <tr *ngFor = "let tweet of tweets">
             <td>
                 <p>{{tweet.content}}</p>
                 <b id="dateBottomLeft">{{tweet.date | date:'short'}}</b>
                 <b id="likes">Likes {{tweet.likes.length}}</b>
-                <b id="likeRight">Like this tweet!</b>
+                <button class="btn-sm btn-success" (click)="likeTweet(tweet.id)"  type="button" *ngIf="urlId == 1">Like!</button>
             </td>
         </tr>
     </table>
