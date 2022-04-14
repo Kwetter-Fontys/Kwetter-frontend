@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ModerationComponent } from './moderation/moderation.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { HeaderComponent } from './header/header.component';
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AuthModule,
     HttpClientModule,
   ],
   providers: [],
