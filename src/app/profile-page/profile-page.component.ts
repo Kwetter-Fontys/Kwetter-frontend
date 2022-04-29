@@ -92,7 +92,7 @@ export class ProfilePageComponent implements OnInit {
 
   likeTweet(tweetId: number)
   {
-    this.tweetService.likeTweet(tweetId,this.urlId).subscribe(tweet => 
+    this.tweetService.likeTweet(tweetId).subscribe(tweet => 
       {
         this.tweets.forEach(twit => 
         {

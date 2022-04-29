@@ -35,11 +35,11 @@
     </table>
 </div>
 <div class="col-6 tweets">
-    <div class="form-group">
+    <div class="form-group" *ngIf="urlId == userId">
         <form class = "createProduct form-group" #tweetForm = "ngForm">
         <label class="col-form-label mt-4" for="inputDefault">Create a tweet!</label>
         <input type="text" class="form-control" placeholder="Tweet"  name="content" id="inputDefault" ngModel>
-        <button class="btn btn-primary btn-sm" (click)="createTweet(this.tweetForm)"  type="button" *ngIf="urlId == userId">Tweet!</button>
+        <button class="btn btn-primary btn-sm" (click)="createTweet(this.tweetForm)"  type="button">Tweet!</button>
         </form>
       </div>
     <table class="table table-hover">

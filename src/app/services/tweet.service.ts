@@ -33,8 +33,8 @@ export class TweetService {
     return this.http.post<Tweet>(`${this.api_loc}`,  {"content": content, "user": userId}, <Object>this.options);
   }
 
-  likeTweet(tweetId: number, userId: string): Observable<Tweet>
+  likeTweet(tweetId: number): Observable<Tweet>
   {
-    return this.http.put<Tweet>(`${this.api_loc}/${tweetId}?userId=${userId}`, <Object>this.options);
+    return this.http.put<Tweet>(`${this.api_loc}/${tweetId}`, <Object>this.options);
   }
 }
