@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/User';
 import { TweetService } from 'src/app/services/tweet.service';
 import { Tweet } from 'src/app/interfaces/Tweet';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -12,9 +13,10 @@ import { Tweet } from 'src/app/interfaces/Tweet';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private userService: UserService, private tweetService: TweetService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private tweetService: TweetService, private route: ActivatedRoute, private authService: AuthService) { }
 
   urlId!: any;
+  userId: string;
   user: User;
   followings: User[];
   followers: User[];
@@ -24,6 +26,7 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    this.userId = this.authService.loadUserProfile()["__zone_symbol__value"]["id"];
     if(!this.route.snapshot.paramMap.get("id"))
     {
       this.urlId = "0"
@@ -36,7 +39,7 @@ export class ProfilePageComponent implements OnInit {
     this.getAll(this.urlId);
   }
 
-  getAll(id:number): void
+  getAll(id:string): void
   {
     this.getUser(id);
     this.getTweets(id);
@@ -44,7 +47,7 @@ export class ProfilePageComponent implements OnInit {
     this.getFollowings(id);
   }
 
-  getUser(id: number): void
+  getUser(id: string): void
   {
     this.userService.readSingleUser(id).subscribe(user => 
       {
@@ -52,7 +55,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
-  getTweets(id: number): void
+  getTweets(id: string): void
   {
     this.tweetService.readTweets(id).subscribe(tweets => 
       {
@@ -70,7 +73,7 @@ export class ProfilePageComponent implements OnInit {
       );
   }
 
-  getFollowings(id: number): void
+  getFollowings(id: string): void
   {
     this.userService.getFollowers(id).subscribe(following => 
       {
@@ -78,7 +81,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
-  getFollowers(id: number): void
+  getFollowers(id: string): void
   {
     this.userService.getFollowings(id).subscribe(follower => 
       {
@@ -106,7 +109,6 @@ export class ProfilePageComponent implements OnInit {
           }
         }
         });
-        console.log(this.tweets);
       });
   }
 

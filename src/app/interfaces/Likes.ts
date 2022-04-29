@@ -1,5 +1,5 @@
 export interface Likes {
     likesId: number;
-    userId: number;
+    userId: string;
     tweetId: number;
 }

@@ -24,22 +24,22 @@ export class UserService {
   }
   
 
-  readSingleUser(id: number): Observable<User>
+  readSingleUser(id: string): Observable<User>
   {
     return this.http.get<User>(`${this.api_loc}/${id}`, <Object>this.options);
   }
 
-  updateUser(id: number, user: User): Observable<User>
+  updateUser(id: string, user: User): Observable<User>
   {
     return this.http.put<User>(`${this.api_loc}/${id}`, user, <Object>this.options);
   }
 
-  getFollowers(id: number): Observable<User[]>
+  getFollowers(id: string): Observable<User[]>
   {
     return this.http.get<User[]>(`${this.api_loc}/followers/${id}`, <Object>this.options);
   }
 
-  getFollowings(id: number): Observable<User[]>
+  getFollowings(id: string): Observable<User[]>
   {
     return this.http.get<User[]>(`${this.api_loc}/followings/${id}`, <Object>this.options);
   }

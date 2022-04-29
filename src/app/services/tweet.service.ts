@@ -23,17 +23,17 @@ export class TweetService {
     this.api_loc = environment.tweetApiUrl + "tweetcontroller";
   }
 
-  readTweets(tweetId: number): Observable<Tweet[]>
+  readTweets(userId: string): Observable<Tweet[]>
   {
-    return this.http.get<Tweet[]>(`${this.api_loc}/${tweetId}`, <Object>this.options);
+    return this.http.get<Tweet[]>(`${this.api_loc}/${userId}`, <Object>this.options);
   }
 
-  createTweet(content: string, userId: number): Observable<Tweet>
+  createTweet(content: string, userId: string): Observable<Tweet>
   {
     return this.http.post<Tweet>(`${this.api_loc}`,  {"content": content, "user": userId}, <Object>this.options);
   }
 
-  likeTweet(tweetId: number, userId: number): Observable<Tweet>
+  likeTweet(tweetId: number, userId: string): Observable<Tweet>
   {
     return this.http.put<Tweet>(`${this.api_loc}/${tweetId}?userId=${userId}`, <Object>this.options);
   }
