@@ -1,50 +1,13 @@
-.profile
-{
-    float: left;
-    border: 1px solid black;
-    width: 25%;
-}
-.col-6 .images
-{
-     border-radius: 50%; 
-}
-.details
-{
-    width: 100%;
-    border: 1px solid black;
-    float: right;
-}
-.details p
-{
-    padding-left: 1%;
-    padding-top: 1%;
-}
 .images
 {
     width: 75px;
     height: 75px;
 }
-
-.tweets
+.col-5
 {
-    float:left;
-    width: 50%;
+    float: left;
 }
-.tweets td
+.col-3
 {
-    border: 1px solid black;
-}
-.followers
-{
-    float: right;
-    width: 25%;
-}
-b, p, tr, thead
-{
-    color: black !important;
-}
-
-.btn-success
-{
-    background-color: #157347 !important;
+    float: left;
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdministrationComponent } from './administration/administration.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import {AuthGuard} from "./auth/auth.guard";
+import { StartPageComponent } from './start-page/start-page.component';
 
 
 const routes: Routes =
@@ -11,8 +12,9 @@ const routes: Routes =
   path: '',
   canActivate: [AuthGuard],
   children: [
-  { path: '', redirectTo: 'profile', pathMatch: 'full' },
+  { path: '', redirectTo: 'start-page', pathMatch: 'full' },
   { path: 'profile/:id', component: ProfilePageComponent },
+  { path: 'start-page', component: StartPageComponent },
   { path: 'admin', component: AdministrationComponent }
   ]
   },

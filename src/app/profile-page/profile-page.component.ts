@@ -5,6 +5,7 @@ import { User } from 'src/app/interfaces/User';
 import { TweetService } from 'src/app/services/tweet.service';
 import { Tweet } from 'src/app/interfaces/Tweet';
 import { AuthService } from '../auth/service/auth.service';
+import { Likes } from '../interfaces/Likes';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,6 +24,7 @@ export class ProfilePageComponent implements OnInit {
   tweets: Tweet[];
   editing: boolean = false;
   loggedIn: boolean = false;
+  liked: boolean = false;
 
   ngOnInit(): void 
   {
@@ -61,6 +63,7 @@ export class ProfilePageComponent implements OnInit {
       {
         this.tweets = tweets
       });
+
   }
   
   updateUser(id, form)
@@ -110,6 +113,7 @@ export class ProfilePageComponent implements OnInit {
         }
         });
       });
+      this.liked = true;
   }
 
   createTweet(form)
@@ -122,4 +126,11 @@ export class ProfilePageComponent implements OnInit {
       }
     );
   }
+
+  checkIfTweetIsLiked(tweet: Tweet): boolean
+  {
+    return tweet.likes.some(e => e.user == this.userId);
+  }
 }
+
+
