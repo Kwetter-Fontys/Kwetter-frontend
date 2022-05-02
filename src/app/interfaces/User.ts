@@ -5,4 +5,5 @@ export interface User {
     location: string;
     website: string;
     biography: string;
+    image: string;
 }

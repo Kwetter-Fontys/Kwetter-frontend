@@ -4,6 +4,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import {AuthGuard} from "./auth/auth.guard";
 import { StartPageComponent } from './start-page/start-page.component';
+import { ModerationComponent } from './moderation/moderation.component';
 
 
 const routes: Routes =
@@ -18,6 +19,7 @@ const routes: Routes =
   { path: 'admin', component: AdministrationComponent }
   ]
   },
+  { path: 'logout', component: ModerationComponent },
 ]
 
 @NgModule({

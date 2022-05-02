@@ -4,7 +4,7 @@
     <div class="d-flex flex-center flex-column mb-5">
         <!--begin::Avatar-->
         <div class="symbol symbol-100px symbol-circle mb-7">
-            <img src="./assets/test.jpg" alt="image">
+            <img src="{{user.image}}" alt="image">
         </div>
         <!--end::Avatar-->
         <!--begin::Name-->
@@ -50,6 +50,7 @@
         <p>Location: <input class="form-control" id="userLocation" name="location" [(ngModel)] = "user.location"></p>
         <p>Website: <input class="form-control" id="userWebsite" name="website" [(ngModel)] = "user.website"></p>
         <p>Bio: <input class="form-control" id="userBiography" name="biography" [(ngModel)] = "user.biography"></p>
+        <input type="hidden" id="userImage" name="image" [(ngModel)] = "user.image" >
         <button class="btn btn-primary btn-sm" (click)="editing = false; updateUser(user.id,this.updateForm)"  type="button">Update</button>
     </form>
 </div>
@@ -71,7 +72,7 @@
         <div class="d-flex align-items-center">
           <!--begin::Avatar-->
           <div class="symbol symbol-50 me-4">
-            <span class="symbol-label" style="background-image:url(./assets/test.jpg);"></span>
+            <span class="symbol-label" style="background-image:url({{user.image}});"></span>
           </div>
           <!--end::Avatar-->
           <div class="pe-5">
