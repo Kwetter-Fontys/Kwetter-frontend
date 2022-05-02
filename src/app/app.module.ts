@@ -11,6 +11,8 @@ import { ModerationComponent } from './moderation/moderation.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { HeaderComponent } from './header/header.component';
 import {AuthModule} from "./auth/auth.module";
+import { HighlightDirective } from './filter/highlight.directive';
+import {AppFilterPipe} from "./filter/app-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {AuthModule} from "./auth/auth.module";
     RegistrationComponent,
     ModerationComponent,
     AdministrationComponent,
-    HeaderComponent
+    HeaderComponent,
+    AppFilterPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

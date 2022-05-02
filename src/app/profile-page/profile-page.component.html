@@ -19,6 +19,18 @@
             <a (click)="editing = true" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Edit</a>
         </span>
     </div>
+
+    <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && !isFollowed">
+        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
+            <a (click)="followUser()" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Follow this user</a>
+        </span>
+    </div>
+
+    <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && isFollowed">
+        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
+            <a (click)="unfollowUser()" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Unfollow this user</a>
+        </span>
+    </div>
     <!--end::Details toggle-->
     <div class="separator separator-dashed my-3"></div>
     <!--begin::Details content-->
@@ -121,8 +133,6 @@
 
 <div class="col-3">
     <div class="details">
-    <a href="">{{followers.length}} Followers </a> <a href="">{{followings.length}} Following</a>
-    <br>
     <table class="table table-hover">
         <thead>Followers:</thead>
         <tr>
@@ -139,7 +149,9 @@
             </td>
         </tr>
     </table>
-    <a href="profile">{{tweets.length}} Tweets</a>
+    <a >{{followers.length}} Followers </a> <a>{{followings.length}} Following</a>
+    <br>
+    <a>{{tweets.length}} Tweets</a>
     </div>
 </div>
 <div class="col-6 following"></div>

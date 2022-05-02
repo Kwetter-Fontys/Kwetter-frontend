@@ -23,6 +23,10 @@ export class UserService {
     this.api_loc = environment.userApiUrl + "usercontroller";
   }
   
+  getAllUsers(): Observable<User[]>
+  {
+    return this.http.get<User[]>(`${this.api_loc}`, <Object>this.options);
+  }
 
   readSingleUser(id: string): Observable<User>
   {
@@ -42,5 +46,15 @@ export class UserService {
   getFollowings(id: string): Observable<User[]>
   {
     return this.http.get<User[]>(`${this.api_loc}/followings/${id}`, <Object>this.options);
+  }
+
+  followUser(followUserId): Observable<String>
+  {
+   return this.http.put<String>(`${this.api_loc}/follow/${followUserId}`, <Object>this.options);
+  }
+
+  unfollowUser(followUserId): Observable<String>
+  {
+    return this.http.put<String>(`${this.api_loc}/unfollow/${followUserId}`, <Object>this.options);
   }
 }

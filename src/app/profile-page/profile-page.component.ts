@@ -25,6 +25,7 @@ export class ProfilePageComponent implements OnInit {
   editing: boolean = false;
   loggedIn: boolean = false;
   liked: boolean = false;
+  isFollowed: boolean = false;
 
   ngOnInit(): void 
   {
@@ -81,6 +82,12 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getFollowers(id).subscribe(following => 
       {
         this.followers = following
+        following.forEach(flwr => {
+          if(flwr.id == this.userId)
+          {
+            this.isFollowed = true;
+          }
+        });
       });
   }
 
@@ -130,6 +137,22 @@ export class ProfilePageComponent implements OnInit {
   checkIfTweetIsLiked(tweet: Tweet): boolean
   {
     return tweet.likes.some(e => e.user == this.userId);
+  }
+
+  followUser()
+  {
+    this.userService.followUser(this.urlId).subscribe(res =>
+      {
+        this.isFollowed = true;
+      });
+  }
+
+  unfollowUser()
+  {
+    this.userService.unfollowUser(this.urlId).subscribe(res =>
+      {
+        this.isFollowed = false;
+      });
   }
 }
 

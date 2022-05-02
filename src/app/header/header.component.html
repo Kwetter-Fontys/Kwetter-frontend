@@ -22,10 +22,18 @@
             <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input id="navInput" class="form-control me-sm-2" type="text" placeholder="Search" >
-          <button id="navBtn" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+          <input type="email" class="searchBar" id="search-text" aria-describedby="search-text" 
+          [(ngModel)]="searchText" placeholder="Enter text to search" 
+          autofocus>
       </div>
     </div>
   </nav>
+<div class="col-3" style="float: right;">
+  <ul class="list-group list-group-flush">
+    <li  style="position: relative;" class="list-group-item" *ngFor="let user of users  | appFilter: searchText"
+      appHighlight [searchedWord]="searchText" [content]="item"  
+      [classToApply]="'font-weight-bold'" [setTitle]="'true'" (click)="test" [hidden]="!searchText">
+    <a appHighlight [searchedWord]="searchText" [content]="user.firstName + ' ' + user.lastName" [classToApply]="'highlightText'"href="../profile/{{user.id}}"></a>
+    </li>
+  </ul>
+</div>
