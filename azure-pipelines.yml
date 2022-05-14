@@ -29,16 +29,6 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCloudFrontend'
-        organization: 'kwetter-fontys'
-        scannerMode: 'CLI'
-        configMode: 'file'
-    - task: SonarCloudAnalyze@1
-    - task: SonarCloudPublish@1
-      inputs:
-        pollingTimeoutSec: '300'
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerHub'
