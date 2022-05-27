@@ -32,7 +32,7 @@ stages:
     - task: Npm@1
       inputs:
         command: 'install'
-        workingDir: 'NodeJS/'
+        workingDir: 'Kwetter-frontend/'
 
     - task: SonarCloudPrepare@1
       inputs:
