@@ -129,7 +129,6 @@ export class ProfilePageComponent implements OnInit {
       res=>
       {
         this.tweets = [res].concat(this.tweets);
-        console.log(this.tweets);
       }
     );
   }

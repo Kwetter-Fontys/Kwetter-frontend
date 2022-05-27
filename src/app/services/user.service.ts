@@ -48,13 +48,13 @@ export class UserService {
     return this.http.get<User[]>(`${this.api_loc}/followings/${id}`, <Object>this.options);
   }
 
-  followUser(followUserId): Observable<string>
+  followUser(followUserId: string): Observable<string>
   {
-   return this.http.put<string>(`${this.api_loc}/follow/${followUserId}`, <Object>this.options);
+    return this.http.put<string>(`${this.api_loc}/follow/${followUserId}`, <Object>this.options);
   }
 
-  unfollowUser(followUserId): Observable<string>
+  unfollowUser(followUserId: string): Observable<string>
   {
-    return this.http.put<string>(`${this.api_loc}/unfollow/${followUserId}`, <Object>this.options);
+      return this.http.put<string>(`${this.api_loc}/unfollow/${followUserId}`, <Object>this.options);
   }
 }

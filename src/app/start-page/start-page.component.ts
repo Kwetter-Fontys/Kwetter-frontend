@@ -77,7 +77,6 @@ export class StartPageComponent implements OnInit {
   {
     this.tweetService.likeTweet(tweetId).subscribe(tweet => 
       {
-        console.log(tweet)
         this.linkedTweets.forEach(twit => 
         {
           if(twit.tweet.id == tweet.id)
