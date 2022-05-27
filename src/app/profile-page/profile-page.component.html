@@ -18,6 +18,9 @@
         <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
             <a (click)="editing = true" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Edit</a>
         </span>
+        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
+            <a (click)="deleteUser()" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Delete profile</a>
+        </span>
     </div>
 
     <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && !isFollowed">

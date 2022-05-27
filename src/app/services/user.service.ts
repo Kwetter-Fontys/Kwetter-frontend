@@ -57,4 +57,9 @@ export class UserService {
   {
       return this.http.put<string>(`${this.api_loc}/unfollow/${followUserId}`, <Object>this.options);
   }
+
+  deleteUser(userId: string): Observable<User>
+  {
+      return this.http.delete<User>(`${this.api_loc}/${userId}`, <Object>this.options);
+  }
 }

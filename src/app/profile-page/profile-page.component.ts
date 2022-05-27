@@ -153,6 +153,15 @@ export class ProfilePageComponent implements OnInit {
         this.isFollowed = false;
       });
   }
+
+
+  deleteUser()
+  {
+    this.userService.deleteUser(this.userId).subscribe(res =>
+      {
+        console.log(res);
+      });
+  }
 }
 
 
