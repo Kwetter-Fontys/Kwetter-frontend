@@ -134,7 +134,8 @@
 <div class="col-3">
     <div class="details">
     <table class="table table-hover">
-        <thead>Followers:</thead>
+        <caption style="display:none;">Followers table</caption>
+        <th scope="col">Followers:</th>
         <tr>
             <td *ngFor = "let follower of followers">
                 <a href="profile/{{follower.id}}">{{follower.firstName}} {{follower.lastName}}</a>
@@ -142,7 +143,8 @@
         </tr>
     </table>
     <table class="table table-hover">
-        <thead>Following:</thead>
+        <caption style="display:none;">Followings table</caption>
+        <th scope="col">Following:</th>
         <tr>
             <td *ngFor = "let following of followings">
                 <a href="profile/{{following.id}}">{{following.firstName}} {{following.lastName}}</a>
