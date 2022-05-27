@@ -40,6 +40,9 @@ stages:
         organization: 'kwetter-fontys'
         scannerMode: 'CLI'
         configMode: 'file'
+        cliProjectKey: 'Kwetter-Fontys_Kwetter-frontend'
+        cliProjectName: 'Kwetter-frontend'
+        
         
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
