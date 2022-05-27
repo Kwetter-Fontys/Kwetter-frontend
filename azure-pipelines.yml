@@ -21,13 +21,37 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
-- stage: Build
-  displayName: Build and push stage
+- stage: Main
+  displayName: Setup build analyse and deploy
+  pool:
+    vmImage: windows-latest  
   jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+  - job: Setup
+    displayName: Setup build analyse and deploy
+    steps:
+    - task: Npm@1
+      inputs:
+        command: 'install'
+        workingDir: 'Kwetter/'
+
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'SonarCloudFrontend'
+        organization: 'kwetter-fontys'
+        scannerMode: 'CLI'
+        configMode: 'file'
+        
+    - task: SonarCloudAnalyze@1
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '300'
+
+- stage: Deploy
+  pool:
+    vmImage: $(vmImageName)
+  jobs:
+  - job: Deploy
+    displayName: Deploy to docker
     steps:
     - task: Docker@2
       inputs:
