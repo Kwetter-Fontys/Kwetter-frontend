@@ -14,7 +14,6 @@ export class AuthService {
       const userDetails: KeycloakTokenParsed | undefined = this.keycloakService.getKeycloakInstance().idTokenParsed;
       return userDetails
     } catch (e) {
-      console.log(e);
       return undefined;
     }
   }

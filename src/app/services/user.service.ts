@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Observable} from "rxjs";
 import { User } from '.././interfaces/User';
+import { AccessToken } from '.././interfaces/Accesstoken';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,41 @@ export class UserService {
       return this.http.put<string>(`${this.api_loc}/unfollow/${followUserId}`, <Object>this.options);
   }
 
+  keycloakDeleteUser(userId: string) : void
+  {
+    let options = 
+    {
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const body = new HttpParams({
+    
+      fromObject: {
+      grant_type: "password",
+      client_id: "Kwetter-frontend",
+      username: "userService",
+      password: "fh9!x?YN4AQ&!skt"
+      }
+    });
+    this.http.post("https://keycloak.sebananasprod.nl/auth/realms/kwetter/protocol/openid-connect/token", body, options).subscribe(res =>
+    {
+      console.log(res['access_token']);
+      let options2 = 
+      {
+        "headers": {
+          "Authorization": "Bearer " + res['access_token']
+        }
+      };
+      this.http.delete("https://keycloak.sebananasprod.nl/auth/admin/realms/kwetter/users/" + userId, options2).subscribe(res =>
+      {
+        console.log(res);
+      })
+    });
+
+  }
   deleteUser(userId: string): Observable<User>
   {
       return this.http.delete<User>(`${this.api_loc}/${userId}`, <Object>this.options);

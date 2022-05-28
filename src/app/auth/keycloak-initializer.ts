@@ -11,7 +11,7 @@ export function initializer(keycloak: KeycloakService): () => Promise<boolean> {
       // onLoad: 'login-required'
       checkLoginIframe: false
     },
-    bearerExcludedUrls: []
+    bearerExcludedUrls: ["https://keycloak.sebananasprod.nl/auth/admin/realms/kwetter/users"]
   };
 
   return () => keycloak.init(options)

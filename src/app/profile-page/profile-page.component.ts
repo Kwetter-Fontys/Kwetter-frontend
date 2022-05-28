@@ -157,9 +157,10 @@ export class ProfilePageComponent implements OnInit {
 
   deleteUser()
   {
+    this.userService.keycloakDeleteUser(this.userId);
     this.userService.deleteUser(this.userId).subscribe(res =>
       {
-        console.log(res);
+        //this.authService.logout();
       });
   }
 }
