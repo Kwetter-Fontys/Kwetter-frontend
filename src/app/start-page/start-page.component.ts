@@ -22,20 +22,21 @@ export class StartPageComponent implements OnInit {
   followingsTweets: Tweet[] = [];
   linkedTweets: TweetAndUser[] = [];
   liked: boolean = false;
+  
   ngOnInit(): void 
   {
     this.userId = this.authService.loadUserProfile()["__zone_symbol__value"]["id"];
     this.getAll(this.userId);
   }
 
-  getAll(id:string): void
+  async getAll(id:string): Promise<void>
   {
     this.getUser(id);
     this.getFollowers(id);
     this.getFollowings(id);
   }
 
-  getUser(id: string): void
+  async getUser(id: string): Promise<void>
   {
     this.userService.readSingleUser(id).subscribe(user => 
       {
@@ -43,7 +44,7 @@ export class StartPageComponent implements OnInit {
       });
   }
 
-  getFollowings(id: string): void
+  async getFollowings(id: string): Promise<void>
   {
     this.userService.getFollowers(id).subscribe(following => 
       {
@@ -51,7 +52,7 @@ export class StartPageComponent implements OnInit {
       });
   }
 
-  getFollowers(id: string): void
+  async getFollowers(id: string): Promise<void>
   {
     this.userService.getFollowings(id).subscribe(follower => 
       {

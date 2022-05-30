@@ -42,7 +42,7 @@ export class ProfilePageComponent implements OnInit {
     this.getAll(this.urlId);
   }
 
-  getAll(id:string): void
+  async getAll(id:string): Promise<void>
   {
     this.getUser(id);
     this.getTweets(id);
@@ -50,7 +50,7 @@ export class ProfilePageComponent implements OnInit {
     this.getFollowings(id);
   }
 
-  getUser(id: string): void
+  async getUser(id: string): Promise<void>
   {
     this.userService.readSingleUser(id).subscribe(user => 
       {
@@ -58,7 +58,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
-  getTweets(id: string): void
+  async getTweets(id: string): Promise<void>
   {
     this.tweetService.readTweets(id).subscribe(tweets => 
       {
@@ -77,7 +77,7 @@ export class ProfilePageComponent implements OnInit {
       );
   }
 
-  getFollowings(id: string): void
+  async getFollowings(id: string): Promise<void>
   {
     this.userService.getFollowers(id).subscribe(following => 
       {
@@ -91,7 +91,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
-  getFollowers(id: string): void
+  async getFollowers(id: string): Promise<void>
   {
     this.userService.getFollowings(id).subscribe(follower => 
       {
