@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import { User } from '.././interfaces/User';
 import { AccessToken } from '.././interfaces/Accesstoken';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class UserService {
   options: any;
   api_loc: string;
   
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,  private authService: AuthService) { 
     this.options = 
     {
       "headers": {
@@ -85,11 +86,11 @@ export class UserService {
       {
         "headers": {
           "Authorization": "Bearer " + res['access_token']
-        }
+      }
       };
       this.http.delete("https://keycloak.sebananasprod.nl/auth/admin/realms/kwetter/users/" + userId, options2).subscribe(res =>
       {
-        console.log(res);
+        this.authService.logout();
       })
     });
 
