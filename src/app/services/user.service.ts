@@ -100,3 +100,4 @@ export class UserService {
       return this.http.delete<User>(`${this.api_loc}/${userId}`, <Object>this.options);
   }
 }
+
