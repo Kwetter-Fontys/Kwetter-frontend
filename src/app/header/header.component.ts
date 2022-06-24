@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   urlId: string;
   users: User[] = [];
   searchText = '';
+
   ngOnInit(): void {
     this.userId = this.authService.loadUserProfile()["__zone_symbol__value"]["id"];
 
@@ -29,13 +30,13 @@ export class HeaderComponent implements OnInit {
       this.urlId = this.route.snapshot.paramMap.get("id");
     }
 
+    console.log(this.urlId);
     this.getAllUsers();
   }
 
   logout(): void
   {
       this.authService.logout();
-      console.log("yo");
   }
 
   getAllUsers()

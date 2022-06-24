@@ -19,8 +19,23 @@
             <a (click)="editing = true" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Edit</a>
         </span>
         <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
-            <a (click)="deleteUser()" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Delete profile</a>
+            <a (click)="popup = true" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Delete profile</a>
         </span>
+
+        <div class="overlay" *ngIf="popup">
+            <div class="popup">
+                <h2>Delete your profile?</h2>
+                <div class="content">
+                There is no way of recovering your account after deletion. Are you sure you want to delete your profile?
+                </div>
+                <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Delete profile">
+                    <a (click)=" deleteUser(); popup = false;" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Delete my profile</a>
+                </span>
+                <span data-bs-toggle="tooltip" id="keepProfileBtn" data-bs-trigger="hover" title="" data-bs-original-title="Keep profile">
+                    <a (click)="popup = false" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Go back</a>
+                </span>
+            </div>
+        </div>
     </div>
 
     <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && !isFollowed">
