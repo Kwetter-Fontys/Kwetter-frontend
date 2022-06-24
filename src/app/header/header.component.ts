@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
       this.urlId = this.route.snapshot.paramMap.get("id");
     }
 
-    console.log(this.urlId);
     this.getAllUsers();
   }
 

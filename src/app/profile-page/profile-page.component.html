@@ -4,11 +4,11 @@
     <div class="d-flex flex-center flex-column mb-5">
         <!--begin::Avatar-->
         <div class="symbol symbol-100px symbol-circle mb-7">
-            <img src="{{user.image}}" alt="image">
+            <img src="{{user.image}}" alt="image" *ngIf="user">
         </div>
         <!--end::Avatar-->
         <!--begin::Name-->
-        <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{user.firstName}} {{user.lastName}}</a>
+        <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1" *ngIf="user">{{user.firstName}} {{user.lastName}}</a>
         <!--end::Name-->
         
     </div>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && !isFollowed">
+    <div class="d-flex flex-stack fs-4 py-3"  *ngIf="urlId != userId && !isFollowed && user">
         <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="" data-bs-original-title="Edit customer details">
             <a (click)="followUser()" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_customer">Follow this user</a>
         </span>
@@ -56,23 +56,23 @@
         <div class="py-5 fs-6">
             <!--begin::Details item-->
             <div class="fw-bolder mt-5">Location</div>
-            <div class="text-gray-600">{{user.location}}</div>
+            <div class="text-gray-600" *ngIf="user">{{user.location}}</div>
             <!--begin::Details item-->
             <!--begin::Details item-->
             <div class="fw-bolder mt-5">Website</div>
             <div class="text-gray-600">
-                <a href="#" class="text-gray-600 text-hover-primary">{{user.website}}</a>
+                <a href="#" class="text-gray-600 text-hover-primary" *ngIf="user">{{user.website}}</a>
             </div>
             <!--begin::Details item-->
             <!--begin::Details item-->
             <div class="fw-bolder mt-5">Biography</div>
-            <div class="text-gray-600">{{user.biography}} 
+            <div class="text-gray-600" *ngIf="user">{{user.biography}} 
             </div>
     </div>
     <!--end::Details content-->
     </div>
 </div>
-<div class="col-3" *ngIf="editing == true">
+<div class="col-3" *ngIf="editing == true && user" >
     <form class = "createProduct form-group" #updateForm = "ngForm">
         <input type="hidden" [(ngModel)] = "user.id" name="id">
         <p>First name: <input class="form-control" id="userFirstname" name="firstName" [(ngModel)] = "user.firstName"></p>
@@ -102,7 +102,7 @@
         <div class="d-flex align-items-center">
           <!--begin::Avatar-->
           <div class="symbol symbol-50 me-4">
-            <span class="symbol-label" style="background-image:url({{user.image}});"></span>
+            <span class="symbol-label" style="background-image:url({{user.image}});" *ngIf="user"></span>
           </div>
           <!--end::Avatar-->
           <div class="pe-5">
@@ -124,7 +124,7 @@
           <span class="fw-bold text-muted text-end me-3">{{tweet.date | date:'short'}}</span>
           <!--end::Date-->
           <!--begin::Likes-->
-          <span class="fw-bold text-muted text-end me-3">Likes: {{tweet.likes.length}}</span>
+          <span class="fw-bold text-muted text-end me-3" >Likes: {{tweet.likes.length}}</span>
           <!--end::Likes-->
           <div class="d-flex">
             <!--begin::Like-->
@@ -169,9 +169,10 @@
             </td>
         </tr>
     </table>
-    <a >{{followers.length}} Followers </a> <a>{{followings.length}} Following</a>
+    <a *ngIf="followers">{{followers.length}} Followers </a> 
+    <a *ngIf="followings">{{followings.length}} Following</a>
     <br>
-    <a>{{tweets.length}} Tweets</a>
+    <a *ngIf="tweets">{{tweets.length}} Tweets</a>
     </div>
 </div>
 <div class="col-6 following"></div>
